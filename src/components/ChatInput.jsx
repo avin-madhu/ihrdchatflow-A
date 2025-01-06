@@ -12,7 +12,7 @@ function ChatInput({ messages, setMessages }) {
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify({ question: messages[messages.length - 1].message, college: "CEC" }),
+      body: JSON.stringify({ question: messages[messages.length - 1].message}),
     });
 
     if (!response.ok) {
