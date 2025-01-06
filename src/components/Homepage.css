@@ -1,3 +1,24 @@
+
 .chat-container {
   scrollbar-width: none;
+}
+
+#mainTitle {
+    font-family: "Righteous", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: aliceblue;  
+    font-size:40px;
+}
+
+#chatContainerId {
+  max-height: 22rem; /* Limit the container height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  word-wrap: break-word; /* Break words when they are too long */
+}
+
+#chatContainerId > div {
+  word-break: break-word; /* Ensure long words break properly */
+  white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
 }

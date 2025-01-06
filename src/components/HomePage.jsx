@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
-import "./Homepage.css";
+import "./Homepage.css"
 function HomePage() {
   const [messages, setMessages] = useState([
     { message: "Hello! How can I help you today?", isUser: false },
@@ -20,7 +20,7 @@ function HomePage() {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <section className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white font-serif">
+            <h2 id="mainTitle" className="text-4xl md:text-5xl font-bold text-white font-serif">
               Welcome to ChatFlow
             </h2>
             <p className="text-xl text-white/80 leading-relaxed font-light">
@@ -31,6 +31,7 @@ function HomePage() {
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6  mt-12">
             <div
               ref={chatContainerRef}
+              id="chatContainerId"
               className=" chat-container space-y-4 max-h-96 overflow-y-auto  mb-4"
             >
               {messages.map((msg, index) => (

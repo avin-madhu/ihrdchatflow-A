@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Send, Mic } from "lucide-react";
 import "./ChatInput.css";
+
+
+
 function ChatInput({ messages, setMessages }) {
   const textareaRef = useRef(null);
   const handleBackendRequest = async (e) => {
@@ -9,7 +12,7 @@ function ChatInput({ messages, setMessages }) {
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify({ question: messages[messages.length - 1].message }),
+      body: JSON.stringify({ question: messages[messages.length - 1].message, college: "CEC" }),
     });
 
     if (!response.ok) {
@@ -44,6 +47,15 @@ function ChatInput({ messages, setMessages }) {
       textareaRef.current.value = ""; // clear the textarea
     }
   };
+
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevent default Enter behavior (like submitting forms)
+      sendMsg();
+    }
+  };
+
   return (
     <div className="flex msg-box items-center space-x-2 bg-white/5 rounded-lg p-2">
       <input
@@ -51,6 +63,7 @@ function ChatInput({ messages, setMessages }) {
         placeholder="Type your message..."
         ref={textareaRef}
         className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-white/50"
+        onKeyDown={handleKeyDown}
       />
       <button className="p-2 text-white/80 hover:text-white transition-colors">
         <Mic className="h-5 w-5" />

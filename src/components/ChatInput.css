@@ -1,3 +1,9 @@
 .msg-box input:focus {
   outline: none;
 }
+
+.msg-box input{
+  padding-left: 20px;
+  font-family: "Sen";
+}
+
