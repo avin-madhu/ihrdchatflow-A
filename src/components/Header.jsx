@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MessageCircle, Menu, Home } from 'lucide-react';
 import Sidebar from './Sidebar';
+import "./Header.css"
 
 function Header({ onNavigate }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,7 +16,7 @@ function Header({ onNavigate }) {
               onClick={() => onNavigate('home')}
             >
               <MessageCircle className="h-8 w-8 text-white" />
-              <h1 className="text-2xl font-bold text-white font-serif">ChatFlow</h1>
+              <h1 id="logoText" className="text-2xl font-bold text-white font-serif">ChatFlow</h1>
             </div>
             <nav className="hidden md:flex space-x-8">
               <button 
