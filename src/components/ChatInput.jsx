@@ -2,17 +2,20 @@ import React, { useRef, useEffect } from "react";
 import { Send, Mic } from "lucide-react";
 import "./ChatInput.css";
 
-
-
-function ChatInput({ messages, setMessages }) {
+function ChatInput({ messages, setMessages, collegeLists, setCollegeLists }) {
   const textareaRef = useRef(null);
+
   const handleBackendRequest = async (e) => {
+    console.log(collegeLists);
     const response = await fetch("http://127.0.0.1:5000/get_data", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify({ question: messages[messages.length - 1].message}),
+      body: JSON.stringify({
+        question: messages[messages.length - 1].message,
+        colleges: collegeLists.colleges,
+      }),
     });
 
     if (!response.ok) {
@@ -47,7 +50,6 @@ function ChatInput({ messages, setMessages }) {
       textareaRef.current.value = ""; // clear the textarea
     }
   };
-
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

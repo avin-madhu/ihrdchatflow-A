@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
-import "./Homepage.css"
-function HomePage() {
+import "./Homepage.css";
+function HomePage({ collegeLists, setCollegeLists }) {
   const [messages, setMessages] = useState([
     { message: "Hello! How can I help you today?", isUser: false },
   ]);
+
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -20,7 +21,10 @@ function HomePage() {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <section className="text-center space-y-4">
-            <h2 id="mainTitle" className="text-4xl md:text-5xl font-bold text-white font-serif">
+            <h2
+              id="mainTitle"
+              className="text-4xl md:text-5xl font-bold text-white font-serif"
+            >
               Welcome to ChatFlow
             </h2>
             <p className="text-xl text-white/80 leading-relaxed font-light">
@@ -43,7 +47,12 @@ function HomePage() {
                 />
               ))}
             </div>
-            <ChatInput messages={messages} setMessages={setMessages} />
+            <ChatInput
+              messages={messages}
+              setMessages={setMessages}
+              collegeLists={collegeLists}
+              setCollegeLists={setCollegeLists}
+            />
           </div>
         </div>
       </main>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import ContactPage from './components/ContactPage';
-import CollegeSelector from './components/CollegeSelector';
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+import HomePage from "./components/HomePage";
+import AboutPage from "./components/AboutPage";
+import ContactPage from "./components/ContactPage";
+import CollegeSelector from "./components/CollegeSelector";
 
 function LoadingScreen() {
   return (
@@ -17,12 +17,11 @@ function LoadingScreen() {
 }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState("home");
   const [isCollegeSelectorOpen, setIsCollegeSelectorOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [collegeLists, setCollegeLists] = useState({});
   useEffect(() => {
-
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 5000); // Loading for 3 seconds
@@ -35,7 +34,7 @@ function App() {
   }
 
   const handleNavigation = (page) => {
-    if (page === 'features') {
+    if (page === "features") {
       setIsCollegeSelectorOpen(true);
     } else {
       setCurrentPage(page);
@@ -44,21 +43,28 @@ function App() {
 
   const renderCurrentPage = () => {
     switch (currentPage) {
-      case 'about':
+      case "about":
         return <AboutPage />;
-      case 'contact':
+      case "contact":
         return <ContactPage />;
       default:
-        return <HomePage />;
+        return (
+          <HomePage
+            collegeLists={collegeLists}
+            setCollegeLists={setCollegeLists}
+          />
+        );
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 to-purple-800">
       <Header onNavigate={handleNavigation} />
-      <CollegeSelector 
-        isOpen={isCollegeSelectorOpen} 
-        onClose={() => setIsCollegeSelectorOpen(false)} 
+      <CollegeSelector
+        isOpen={isCollegeSelectorOpen}
+        onClose={() => setIsCollegeSelectorOpen(false)}
+        collegeLists={collegeLists}
+        setCollegeLists={setCollegeLists}
       />
       {renderCurrentPage()}
     </div>
