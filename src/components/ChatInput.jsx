@@ -14,7 +14,7 @@ function ChatInput({ messages, setMessages, collegeLists, setCollegeLists }) {
       },
       body: JSON.stringify({
         question: messages[messages.length - 1].message,
-        colleges: collegeLists.colleges,
+        colleges: collegeLists,
       }),
     });
 
