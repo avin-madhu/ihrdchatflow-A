@@ -23,10 +23,15 @@ function App() {
   };
   const handleSplashComplete = () => {
     setShowSplash(false);
-    setShowNotification(true);
+    setShowSplash(false);
+    // Add 3 second delay before showing the notification
     setTimeout(() => {
-      setShowNotification(false);
-    }, 4000);
+      setShowNotification(true);
+      // Hide notification after 4 seconds
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 4000);
+    }, 2000);
   };
   const renderCurrentPage = () => {
     switch (currentPage) {
@@ -58,7 +63,7 @@ function App() {
           />
           {showNotification && (
             <Notification
-              message="Please choose a college before starting your chat!"
+              message="Please choose college before starting your chat!"
               onClose={() => setShowNotification(false)}
             />
           )}

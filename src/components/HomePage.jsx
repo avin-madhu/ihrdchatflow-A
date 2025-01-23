@@ -25,11 +25,9 @@ function HomePage({ collegeLists, setCollegeLists }) {
               id="mainTitle"
               className="text-4xl md:text-5xl font-bold text-white font-serif"
             >
-              Welcome to ChatFlow
+              Welcome to RADIUS
             </h2>
-            <p className="text-xl text-white/80 leading-relaxed font-light">
-              Experience the next generation of conversational AI
-            </p>
+            <p className="text-xl text-white/80 leading-relaxed font-light"></p>
           </section>
 
           <div className="bg-white/10 backdrop-blur-md rounded-xl p-6  mt-12">
@@ -60,7 +58,7 @@ function HomePage({ collegeLists, setCollegeLists }) {
       <footer className="bg-white/5 fixed bottom-0 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-center text-white/60 text-sm">
-            © 2024 ChatFlow. All rights reserved.
+            © 2025 RADIUS. All rights reserved.
           </p>
         </div>
       </footer>

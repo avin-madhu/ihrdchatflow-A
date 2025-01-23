@@ -23,7 +23,7 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
             >
               <MessageCircle className="h-8 w-8 text-white" />
               <h1 className="text-2xl font-bold text-white font-serif">
-                ChatFlow
+                RADIUS
               </h1>
             </div>
             <nav className="hidden md:flex space-x-8">
@@ -31,7 +31,6 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
                 onClick={() => onNavigate("home")}
                 className="text-white/80 hover:text-white transition-colors font-medium flex items-center space-x-2"
               >
-                <Home className="h-4 w-4" />
                 <span>Home</span>
               </button>
 
@@ -77,12 +76,6 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
                 className="text-white/80 hover:text-white transition-colors font-medium"
               >
                 About
-              </button>
-              <button
-                onClick={() => onNavigate("contact")}
-                className="text-white/80 hover:text-white transition-colors font-medium"
-              >
-                Contact
               </button>
             </nav>
             <button

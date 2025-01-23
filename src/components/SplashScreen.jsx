@@ -9,7 +9,7 @@ function SplashScreen({ onComplete }) {
     "Finding all the good stuff...",
     "Sprinkling some magic...",
     "Almost there!",
-    "Ready to go! Welcome to ChatFlow!",
+    "Ready to go! Welcome to RADIUS!",
   ];
 
   useEffect(() => {
