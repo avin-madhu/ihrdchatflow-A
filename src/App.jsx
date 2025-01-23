@@ -11,7 +11,7 @@ function App() {
   const [isCollegeSelectorOpen, setIsCollegeSelectorOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [collegeLists, setCollegeLists] = useState([]);
-  const [selectedCollege, setSelectedCollege] = useState(null);
+  const [selectedCollege, setSelectedCollege] = useState(0);
   const [showNotification, setShowNotification] = useState(false);
 
   const handleNavigation = (page) => {

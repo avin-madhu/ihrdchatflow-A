@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import "./Homepage.css";
-function HomePage({ collegeLists, setCollegeLists }) {
+function HomePage({ selectedCollege }) {
   const [messages, setMessages] = useState([
     { message: "Hello! How can I help you today?", isUser: false },
   ]);
@@ -48,8 +48,7 @@ function HomePage({ collegeLists, setCollegeLists }) {
             <ChatInput
               messages={messages}
               setMessages={setMessages}
-              collegeLists={collegeLists}
-              setCollegeLists={setCollegeLists}
+              selectedCollege={selectedCollege}
             />
           </div>
         </div>

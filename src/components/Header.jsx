@@ -7,9 +7,10 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const colleges = [
-    { id: "clg1", name: "CEC" },
-    { id: "clg2", name: "College of eng adoor" },
-    { id: "clg3", name: "Model Eng clg" },
+    { id: 0, name: "College of engineering Chengannur" },
+    { id: 1, name: "College of Engineering Karunagappally" },
+    { id: 2, name: "Model Engineering College clg" },
+    { id: 3, name: "College of Applied science  Adoor" },
   ];
 
   return (

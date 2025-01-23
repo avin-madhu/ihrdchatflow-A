@@ -2,11 +2,11 @@ import React, { useRef, useEffect } from "react";
 import { Send, Mic } from "lucide-react";
 import "./ChatInput.css";
 
-function ChatInput({ messages, setMessages, collegeLists, setCollegeLists }) {
+function ChatInput({ messages, setMessages, selectedCollege }) {
   const textareaRef = useRef(null);
 
   const handleBackendRequest = async (e) => {
-    console.log(collegeLists);
+    console.log(selectedCollege);
     const response = await fetch("http://127.0.0.1:5000/get_data", {
       method: "POST",
       headers: {
@@ -14,7 +14,7 @@ function ChatInput({ messages, setMessages, collegeLists, setCollegeLists }) {
       },
       body: JSON.stringify({
         question: messages[messages.length - 1].message,
-        colleges: collegeLists,
+        colleges: selectedCollege,
       }),
     });
 
