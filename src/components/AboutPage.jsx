@@ -1,9 +1,11 @@
 import React from "react";
 import { Bot, Brain, Zap } from "lucide-react";
 import Radiusaboutuspic from "./Radiusaboutuspic.jpg";
+import SpotlightCard from "./SpotlightCard";
+
 function AboutPage() {
   return (
-    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-900 to-purple-800">
+    <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-[#020b1c]">
       <div className="max-w-4xl mx-auto space-y-12">
         <section className="text-center">
           <h1 className="text-5xl font-bold text-white mb-6 font-serif">
@@ -41,7 +43,8 @@ function AboutPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+
+          <SpotlightCard className="bg-white/10 backdrop-blur-md rounded-xl p-6">
             <Bot className="h-12 w-12 text-purple-400 mb-4" />
             <h3 className="text-xl font-bold text-white mb-3">
               Intelligent Assistance
@@ -49,9 +52,9 @@ function AboutPage() {
             <p className="text-white/70">
               Provide accurate and contextual responses to your queries.
             </p>
-          </div>
+            </SpotlightCard>
 
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+          <SpotlightCard className="bg-white/10 backdrop-blur-md rounded-xl p-6">
             <Brain className="h-12 w-12 text-purple-400 mb-4" />
             <h3 className="text-xl font-bold text-white mb-3">
               Personalized Responses
@@ -60,9 +63,9 @@ function AboutPage() {
               Receive personalized recommendations and solutions, tailored to
               your needs and preferences.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
+          <SpotlightCard className="bg-white/10 backdrop-blur-md rounded-xl p-6">
             <Zap className="h-12 w-12 text-purple-400 mb-4" />
             <h3 className="text-xl font-bold text-white mb-3">
               Instant Response
@@ -70,7 +73,7 @@ function AboutPage() {
             <p className="text-white/70">
               Get immediate answers to your questions, available 24/7.
             </p>
-          </div>
+          </SpotlightCard>
         </div>
       </div>
     </div>

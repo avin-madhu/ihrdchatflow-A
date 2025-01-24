@@ -1,60 +1,65 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Send, Mic } from "lucide-react";
 import "./ChatInput.css";
 
 function ChatInput({ messages, setMessages, selectedCollege }) {
   const textareaRef = useRef(null);
+  const [isRecording, setIsRecording] = useState(false); // Track recording state
+  const [recognition, setRecognition] = useState(null); // Store SpeechRecognition instance
 
-  const handleBackendRequest = async (e) => {
-    console.log(selectedCollege);
-    const response = await fetch("http://127.0.0.1:5000/get_data", {
-      method: "POST",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        question: messages[messages.length - 1].message,
-        colleges: selectedCollege,
-      }),
-    });
-
-    if (!response.ok) {
-      console.error("No response bruh!");
-    }
-
-    console.log(response.status + "successs ahda monu");
-
-    const data = await response.json();
-    console.log(data["output"]);
-    //setResponseData(data['output']);
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { message: data["output"], isUser: false },
-    ]);
-    //speakText(data['output'])
-  };
   useEffect(() => {
-    if (messages.length > 0 && messages.length % 2 == 0) {
-      console.log("end message: " + messages[messages.length - 1]);
-      handleBackendRequest();
+    // Initialize SpeechRecognition
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      const recognitionInstance = new SpeechRecognition();
+      recognitionInstance.continuous = true;
+      recognitionInstance.interimResults = true;
+      recognitionInstance.lang = "en-US";
+      setRecognition(recognitionInstance);
+
+      recognitionInstance.onresult = (event) => {
+        const transcript = Array.from(event.results)
+          .map((result) => result[0].transcript)
+          .join("");
+        textareaRef.current.value = transcript; // Update input with transcript
+      };
+
+      recognitionInstance.onend = () => {
+        setIsRecording(false);
+      };
+    } else {
+      console.warn("SpeechRecognition is not supported in this browser.");
     }
-  }, [messages]);
+  }, []);
+
+
   const sendMsg = () => {
     const message = textareaRef.current.value;
-    console.log(message);
     if (message !== "") {
       setMessages((prevMessages) => [
         ...prevMessages,
         { message, isUser: true },
       ]);
-      textareaRef.current.value = ""; // clear the textarea
+      textareaRef.current.value = ""; // Clear the textarea
     }
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevent default Enter behavior (like submitting forms)
+      e.preventDefault();
       sendMsg();
+    }
+  };
+
+  const toggleRecording = () => {
+    if (!recognition) return;
+    if (isRecording) {
+      recognition.stop();
+      setIsRecording(false);
+    } else {
+      recognition.start();
+      setIsRecording(true);
     }
   };
 
@@ -67,11 +72,16 @@ function ChatInput({ messages, setMessages, selectedCollege }) {
         className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-white/50"
         onKeyDown={handleKeyDown}
       />
-      <button className="p-2 text-white/80 hover:text-white transition-colors">
+      <button
+        className={`p-2 text-white/80 hover:text-white transition-colors ${
+          isRecording ? "animate-pulse text-red-500" : ""
+        }`}
+        onClick={toggleRecording}
+      >
         <Mic className="h-5 w-5" />
       </button>
       <button
-        className="p-2 rounded-full bg-purple-500 hover:bg-purple-600 transition-colors"
+        className="p-2 rounded-full bg-[#4d70b0] hover:bg-[] transition-colors"
         onClick={sendMsg}
       >
         <Send className="h-5 w-5 text-white" />

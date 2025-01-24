@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { MessageCircle, Menu, Home, ChevronDown } from "lucide-react";
 import Sidebar from "./Sidebar";
+import './Header.css'
 
 function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const colleges = [
-    { id: 0, name: "College of engineering Chengannur" },
-    { id: 1, name: "College of Engineering Karunagappally" },
-    { id: 2, name: "Model Engineering College clg" },
-    { id: 3, name: "College of Applied science  Adoor" },
+    { id: 1, name: "College of engineering Chengannur" },
+    { id: 2, name: "College of Engineering Karunagappally" },
+    { id: 3, name: "Model Engineering College"    },
+    { id: 4, name: "College of Applied science Adoor" },
   ];
 
   return (
@@ -23,7 +24,7 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
               onClick={() => onNavigate("home")}
             >
               <MessageCircle className="h-8 w-8 text-white" />
-              <h1 className="text-2xl font-bold text-white font-serif">
+              <h1 id="logoText" className="text-2xl font-bold text-white font-serif">
                 RADIUS
               </h1>
             </div>

@@ -6,6 +6,7 @@ import ContactPage from "./components/ContactPage";
 import CollegeSelector from "./components/CollegeSelector";
 import SplashScreen from "./components/SplashScreen";
 import Notification from "./components/Notification";
+
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [isCollegeSelectorOpen, setIsCollegeSelectorOpen] = useState(false);
@@ -15,14 +16,15 @@ function App() {
   const [showNotification, setShowNotification] = useState(false);
 
   const handleNavigation = (page) => {
-    if (page === "features") {
+    if (page === "Choose College") {
+
       setIsCollegeSelectorOpen(true);
     } else {
+
       setCurrentPage(page);
     }
   };
   const handleSplashComplete = () => {
-    setShowSplash(false);
     setShowSplash(false);
     // Add 3 second delay before showing the notification
     setTimeout(() => {
@@ -45,7 +47,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 to-purple-800">
+    <div className="min-h-screen bg-[#020b1c]">
       {showSplash ? (
         <SplashScreen onComplete={handleSplashComplete} />
       ) : (
@@ -63,6 +65,7 @@ function App() {
           />
           {showNotification && (
             <Notification
+              className="bg-[#4d70b0]"
               message="Please choose college before starting your chat!"
               onClose={() => setShowNotification(false)}
             />
