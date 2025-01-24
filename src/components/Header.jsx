@@ -12,6 +12,7 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
     { id: 2, name: "College of Engineering Karunagappally" },
     { id: 3, name: "Model Engineering College"    },
     { id: 4, name: "College of Applied science Adoor" },
+    { id: 5, name: "College of Engineering Poonjar" },
   ];
 
   return (

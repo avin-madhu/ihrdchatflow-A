@@ -11,9 +11,12 @@ function Sidebar({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const colleges = [
-    { id: "1", name: "College of Engineering Chengannur" },
-    { id: "2", name: "College of Engineeering Karungapally" },
-    { id: "3", name: "" },
+    { id: 1, name: "College of Engineering Chengannur" },
+    { id: 2, name: "College of Engineeering Karungapally" },
+    { id: 3, name: "Model Engineering College" },
+    { id: 4, name: "College of Applied Science Adoor" },
+    { id: 5, name: "College of Engineering Poonjaar" },
+
   ];
 
   const handleNavClick = (page) => {
