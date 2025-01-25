@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MessageCircle, Menu, Home, ChevronDown } from "lucide-react";
 import Sidebar from "./Sidebar";
 import './Header.css'
+import logo from './logo.png';
 
 function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,7 +25,8 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
               className="flex items-center space-x-2 cursor-pointer"
               onClick={() => onNavigate("home")}
             >
-              <MessageCircle className="h-8 w-8 text-white" />
+              {/* <MessageCircle className="h-8 w-8 text-white" /> */}
+              <img src={logo} className="h-8 w-8"></img>
               <h1 id="logoText" className="text-2xl font-bold text-white font-serif">
                 RADIUS
               </h1>

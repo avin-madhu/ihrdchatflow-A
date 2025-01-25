@@ -2,13 +2,14 @@ import React from "react";
 import { Bot, Brain, Zap } from "lucide-react";
 import Radiusaboutuspic from "./Radiusaboutuspic.jpg";
 import SpotlightCard from "./SpotlightCard";
+import './AboutPage.css'
 
 function AboutPage() {
   return (
     <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-[#020b1c]">
       <div className="max-w-4xl mx-auto space-y-12">
         <section className="text-center">
-          <h1 className="text-5xl font-bold text-white mb-6 font-serif">
+          <h1 id="AboutHeading" className="text-10xl font-bold text-white mb-6 font-serif">
             About RADIUS
           </h1>
           <p className="text-xl text-white/80 leading-relaxed">
@@ -26,7 +27,7 @@ function AboutPage() {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white font-serif">
+            <h2 id="AboutSubHeading" className="text-3xl font-bold text-white font-serif">
               Introducing RADIUS
             </h2>
             <p className="text-white/80 leading-relaxed">

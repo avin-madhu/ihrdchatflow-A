@@ -47,9 +47,11 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020b1c]">
+    <div className="min-h-screen bg-[#020b1c] sm:">
       {showSplash ? (
-        <SplashScreen onComplete={handleSplashComplete} />
+        <SplashScreen 
+        className={showSplash ? "splash-screen sm:w-1/2 sm:h-1/2" : ""}
+        onComplete={handleSplashComplete} />
       ) : (
         <>
           <Header

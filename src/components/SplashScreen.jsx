@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useSprings, animated } from '@react-spring/web';
 
 const SplashScreen = ({
-  text = 'Campus Updates? Just ask me!',
+  text = 'Campus Data? Just ask me!',
   delay = 200,
   className = '',
   animateBy = 'words', // 'words' or 'letters'
@@ -80,7 +80,7 @@ const SplashScreen = ({
     <div className="fixed inset-0 flex items-center justify-center">
       <div
         ref={ref}
-        className={`blur-text text-white text-4xl md:text-6xl font-bold ${className}`}
+        className={`blur-text text-white text-2xl md:text-6xl font-bold ${className}`}
       >
         {springs.map((props, index) => (
           <animated.span
