@@ -1,4 +1,3 @@
-// HomePage.jsx
 import React, { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
@@ -9,50 +8,62 @@ function HomePage({ selectedCollege }) {
   const [messages, setMessages] = useState([
     { message: "Hello! How can I help you today?", isUser: false },
   ]);
-
   const [isBotProcessing, setIsBotProcessing] = useState(false);
-
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
+// https://radius-pjnb.onrender.com  ==> hosted link
+// http://127.0.0.1:5000/get_data    ==> local host link
+
+
   const handleBackendRequest = async () => {
-    setIsBotProcessing(true);
-    const response = await fetch("https://radius-pjnb.onrender.com/get_data", {
-      method: "POST",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        question: messages[messages.length - 1]?.message || "",
-        colleges: selectedCollege,
-      }),
-    });
+    try {
+      setIsBotProcessing(true);
+      const response = await fetch("https://radius-pjnb.onrender.com/get_data ", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: messages[messages.length - 1]?.message || "",
+          colleges: selectedCollege,
+        }),
+      });
 
-    if (!response.ok) {
-      console.error("No response received!");
+      if (!response.ok) {
+        throw new Error("No response received!");
+      }
+
+      const data = await response.json();
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { message: data["output"], isUser: false },
+      ]);
+    } catch (error) {
+      console.error("Error:", error);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { message: "Sorry, there was an error. Please try again.", isUser: false },
+      ]);
+    } finally {
       setIsBotProcessing(false);
-      return;
     }
-
-    const data = await response.json();
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { message: data["output"], isUser: false },
-    ]);
-    setIsBotProcessing(false);
   };
 
   useEffect(() => {
-    if (messages.length > 0 && messages.length % 2 === 0) {
+    if (
+      messages.length > 0 && 
+      messages[messages.length - 1].isUser && 
+      !isBotProcessing
+    ) {
       handleBackendRequest();
     }
-  }, [messages]);
+  }, [messages, isBotProcessing]);
 
   return (
     <>
@@ -68,11 +79,11 @@ function HomePage({ selectedCollege }) {
             <p className="text-xl text-white/80 leading-relaxed font-light"></p>
           </section>
 
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6  mt-12">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 mt-12">
             <div
               ref={chatContainerRef}
               id="chatContainerId"
-              className=" chat-container space-y-4 max-h-96 overflow-y-auto  mb-4"
+              className="chat-container space-y-4 max-h-96 overflow-y-auto mb-4"
             >
               {messages.map((msg, index) => (
                 <ChatMessage
@@ -134,7 +145,7 @@ const StyledWrapper = styled.div`
     width: 10px;
     margin-right: 10px;
     border-radius: 10px;
-    background-color:rgb(123, 182, 255);
+    background-color: rgb(123, 182, 255);
     animation: pulse 1.5s infinite ease-in-out;
   }
 
