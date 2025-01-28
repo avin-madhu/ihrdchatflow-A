@@ -62,7 +62,7 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
                       {colleges.map((college) => (
                         <button
                           key={college.id}
-                          className="w-full px-4 py-2 text-left text-gray-700 hover:bg-purple-50 transition-colors"
+                          className="w-full px-4 py-2 text-left text-gray-700 hover:bg-[#1b212e] transition-colors"
                           onClick={() => {
                             onCollegeSelect(college.id);
                             setIsDropdownOpen(false);
@@ -85,7 +85,7 @@ function Header({ onNavigate, selectedCollege, onCollegeSelect }) {
             </nav>
             <button
               className="md:hidden text-white"
-              onClick={() => setIsSidebarOpen(true)}
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
               <Menu className="h-6 w-6" />
             </button>

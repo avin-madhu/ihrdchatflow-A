@@ -34,7 +34,7 @@ function Sidebar({
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-indigo-900 transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`fixed top-0 right-0 h-full w-64 bg-[#1b212e] transform transition-transform duration-300 ease-in-out z-40 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -89,12 +89,12 @@ function Sidebar({
             >
               About
             </button>
-            <button
+            {/* <button
               onClick={() => handleNavClick("contact")}
               className="text-white/80 hover:text-white transition-colors font-medium p-2 text-left"
             >
               Contact
-            </button>
+            </button> */}
           </nav>
         </div>
       </div>
