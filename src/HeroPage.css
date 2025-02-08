@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+  }
+
+  spline-viewer {
+    size: 200px;
+  }
+  #title{
+    text-align: center;
+    font-size: 150px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    font-family: 'righteous';
+}
+
+  #startButton{
+    position: absolute;
+    width: 300px;
+    top: 80%;
+    left: 50%;
+    font-family: 'sen';
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 30px;
+  /* box-shadow: #000000 4px 4px 0 0; */
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+
+  #startButton:hover{
+    background-color: #fff;
+  }
+
+  #startButton:active{
+    box-shadow: #000000 2px 2px 0 0;
+  }
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+  .h-screen {
+    height: 100vh;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .bg-gradient-to-br {
+    background-image: linear-gradient(to bottom right, #3498db, #f1c40f);
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-5xl {
+    font-size: 3rem;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  
+  .mt-6 {
+    margin-top: 1.5rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  
+  .bg-orange-500 {
+    background-color: #ffa07a;
+  }
+  
+  .hover\:bg-orange-700 {
+    background-color: #ff9900;
+  }
+  
+  .text-orange-500 {
+    color: #ffa07a;
+  }
